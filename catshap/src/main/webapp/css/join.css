@@ -1,7 +1,7 @@
 .error {
-            color: red;
-            font-size: 0.9em;
-        }
+	color: rgb(255, 128, 128);
+	font-size: var(--font-size-smi-4);
+}
 .strong-join {
   margin: 0;
   position: relative;
@@ -302,11 +302,22 @@
   position: relative;
   font-size: var(--font-size-smi-4);
   font-family: var(--font-jost);
-  color: var(--color-white);
-  text-align: left;
+  color: var(--color-black);
+  text-align: center;
   display: flex;
   align-items: center;
   flex-shrink: 0;
+}
+.search-check {
+  width: 200px;
+  position: relative;
+  font-size: var(--font-size-smi-8);
+  font-family: var(--font-jost);
+  color: var(--color-black);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding-left: 30px;
 }
 .container47,
 .input14{
@@ -328,7 +339,7 @@
   cursor: pointer;
   border: 0;
   padding: var(--padding-xs-5) var(--padding-sm) var(--padding-2xs-5);
-  background-color: var(--color-mediumaquamarine);
+  background-color: var(--color-deepskyblue);
   border-radius: var(--br-10xs-6);
   opacity: 0.85;
 }
