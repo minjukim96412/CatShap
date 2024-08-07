@@ -29,7 +29,7 @@ public class UsersRegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String usid = request.getParameter("usid");
         String unick = request.getParameter("unick");
-        String mktAgree = request.getParameter("mktAgree"); // 마케팅 동의 상태
+        String mktAgree = request.getParameter("mktAgree");
 
         try {
             Users user = new Users();
@@ -43,13 +43,14 @@ public class UsersRegisterServlet extends HttpServlet {
             user.setUmailAddress(request.getParameter("umailAddress"));
             user.setUaddress(request.getParameter("uaddress"));
             user.setUdetailAddress(request.getParameter("udetailAddress"));
-            user.setMktAgree(mktAgree != null ? "Y" : "N"); // 마케팅 동의 상태 설정
+            user.setMktAgree(mktAgree != null ? "Y" : "N");
 
             usersJoinService.registerUser(user);
-            response.sendRedirect("success.jsp");
+
+            // 회원가입 성공 후 로그인 페이지로 리다이렉트
+            response.sendRedirect("user_login.jsp");
         } catch (SQLException e) {
             throw new ServletException("Database error", e);
         }
     }
 }
-

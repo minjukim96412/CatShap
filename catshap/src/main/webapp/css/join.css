@@ -1,3 +1,39 @@
+.modal {
+    display: none; /* 숨김 상태로 시작 */
+    position: fixed; /* 화면 고정 */
+    z-index: 1; /* 가장 위에 표시 */
+    left: 0;
+    top: 0;
+    width: 100%; /* 전체 화면 폭 */
+    height: 100%; /* 전체 화면 높이 */
+    overflow: auto; /* 스크롤 가능 */
+    background-color: rgba(0,0,0,0.4); /* 투명한 검정색 배경 */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 중앙 정렬 */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* 모달 폭 */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer; /* 커서가 포인터로 보이게 함 */
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+
+
 .error {
 	color: rgb(255, 128, 128);
 	font-size: var(--font-size-smi-4);
@@ -363,9 +399,8 @@
   font-family: var(--font-jost);
   color: var(--color-black);
   display: flex;
-  align-items: center;
+  align-items: left;
   flex-shrink: 0;
-  padding-left: 30px;
 }
 .container47,
 .input14{
@@ -387,7 +422,7 @@
   cursor: pointer;
   border: 0;
   padding: var(--padding-xs-5) var(--padding-sm) var(--padding-2xs-5);
-  background-color: var(--color-deepskyblue);
+  background-color: rgb(112,198,199);
   border-radius: var(--br-10xs-6);
   opacity: 0.85;
 }
@@ -550,15 +585,33 @@
 .link75 {
   flex: 1;
   border-radius: var(--br-10xs);
-  background-color: var(--color-mediumaquamarine);
+  background-color: rgb(112,198,199);;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: flex-start;
-  padding: var(--padding-mini-9) var(--padding-mid) 16.1px;
+  padding: var(--padding-smi) var(--padding-mid) var(--padding-mini);
   gap: var(--gap-6xs);
   opacity: 0.95;
   cursor: pointer;
+  border: 1px solid var(--color-whitesmoke-400);
+  color: var(--color-darkslategray-200);
+}
+.link76 {
+  flex: 1;
+  border-radius: var(--br-10xs);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-whitesmoke-400);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: var(--padding-smi) var(--padding-mid) var(--padding-mini);
+  gap: var(--gap-6xs);
+  opacity: 0.95;
+  cursor: pointer;
+  color: var(--color-darkslategray-200);
 }
 .icon-wrapper26 {
   display: flex;
@@ -574,22 +627,6 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-}
-.link76 {
-  width: 94.8px;
-  border-radius: var(--br-10xs);
-  background-color: var(--color-white);
-  border: 1px solid var(--color-whitesmoke-400);
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: var(--padding-smi) var(--padding-mid) var(--padding-mini);
-  gap: var(--gap-6xs);
-  opacity: 0.95;
-  cursor: pointer;
-  color: var(--color-darkslategray-200);
 }
 .actions3,
 .link-parent11 {
@@ -621,7 +658,7 @@
   align-self: stretch;
   align-items: flex-start;
   gap: 26.7px;
-  font-size: var(--font-size-2xs);
+  font-size: var(--font-size-sm);
   color: var(--color-mediumaquamarine);
 }
 .div318,
