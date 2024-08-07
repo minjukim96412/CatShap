@@ -12,32 +12,52 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import catshap.butler.bean.Users;
 import catshap.butler.interfaces.UsersInterface;
 
+public class UsersDao implements UsersInterface {
 
-public class UsersDao implements UsersInterface{
+    private static SqlSessionFactory ssf;
 
-	private static Reader reader = null;
-	private static SqlSessionFactory ssf = null;
-	
-	static {
-		try {
-			reader = Resources.getResourceAsReader("catshap/butler/conf/configuration.xml");
-			ssf = new SqlSessionFactoryBuilder().build(reader);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-	}
-	
-	@Override
-	public List<Users> getUsersList() throws SQLException {
-		return ssf.openSession().selectList("users.getUsersList");
-	}
+    static {
+        try {
+            Reader reader = Resources.getResourceAsReader("catshap/butler/conf/configuration.xml");
+            ssf = new SqlSessionFactoryBuilder().build(reader);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
-	@Override
-	public int registUsers(Users users) throws SQLException {
-		SqlSession ss = ssf.openSession();
-		int result = ss.insert("users.registUsers", users);
-		ss.commit();
-		return result;	
-	}
+    private SqlSession getSession() {
+        return ssf.openSession();
+    }
 
+    @Override
+    public List<Users> getUsersList() throws SQLException {
+        try (SqlSession session = getSession()) {
+            return session.selectList("users.getUsersList");
+        }
+    }
+
+    @Override
+    public int registUsers(Users users) throws SQLException {
+        try (SqlSession session = getSession()) {
+            int result = session.insert("users.registUsers", users);
+            session.commit();
+            return result;
+        }
+    }
+
+    @Override
+    public boolean isUsidTaken(String usid) throws SQLException {
+        try (SqlSession session = getSession()) {
+            Integer count = session.selectOne("users.isUsidTaken", usid);
+            return count != null && count > 0;
+        }
+    }
+
+    @Override
+    public boolean isUnickTaken(String unick) throws SQLException {
+        try (SqlSession session = getSession()) {
+            Integer count = session.selectOne("users.isUnickTaken", unick);
+            return count != null && count > 0;
+        }
+    }
 }

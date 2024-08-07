@@ -7,7 +7,7 @@
     <meta name="viewport" content="initial-scale=1, width=device-width" />
     <link rel="stylesheet" href="./css/global.css" />
     <link rel="stylesheet" href="./css/join.css" />
-    <link rel="stylesheet" href="./css/A-01.css" />
+    <link rel="stylesheet" href="./css/A-01.css" />    
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
@@ -29,6 +29,7 @@
       href="https://fonts.googleapis.com/css2?family=Noto Sans:wght@400&display=swap"
     />
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./js/userjoin.js"></script>
   </head>
   <body>
@@ -193,7 +194,7 @@
         <img class="separator-icon14" alt="" src="./public/separator-12.svg" />
         <div class="form-content">
           <div class="input-labels-parent">
-            <form class="id-input-container1">
+            <form class="id-input-container1" id="signupForm">
               <div class="row31">
                 <div class="row-inner11">
                   <div class="parent17">
@@ -204,13 +205,18 @@
                   </div>
                 </div>    
                   <div class="input12">
-                      <input type="text" class="container44"  id="usid" placeholder="ID" />
+                       <input type="text" class="container44" id="usid" name="usid" placeholder="ID" />
                   </div>
+					<button class="input14" id="idCheckButton">
+	                  <div class="container47">
+	                    <div class="duplicate-check">id check</div>
+	                  </div>
+                	</button>
                   <div class="wrapper28">
                     <div class="div330">(영문소문자/숫자, 4~16자)</div>
                   </div>
-                  <span id="usid_error" class="error"></span><br>
               </div>
+                  <span id="usid_error" class="error"></span><br />
               <div class="row31">
                 <div class="row-inner11">
                   <div class="parent17">
@@ -221,15 +227,15 @@
                   </div>
                 </div>
                 <div class="input12">
-                  <input class="container44" id="upass" placeholder="Password" type="password" />
+                  <input class="container44" id="upass" name="upass" placeholder="Password" type="password" />
                 </div>
                 <div class="wrapper28">
                   <div class="div332">
                     (영문 대소문자/숫자/특수문자 중 3가지 이상 조합, 8자~16자)
                   </div>
                 </div>
-                  <span id="upass_error" class="error"></span><br>
               </div>
+                  <span id="upass_error" class="error"></span><br>
               <div class="row31">
                 <div class="row-inner11">
                   <div class="name-input-label-container">
@@ -240,15 +246,12 @@
                   </div>
                 </div>
                 <div class="input12">
-                  <input
-                    class="container44"
-                    placeholder="Confirm Password"
-                    type="password"
-                  />
+                  <input type="password" id="upass_re" 
+                  class="container44" placeholder="Confirm Password" />
                 </div>
-                <button class="input14">
+                <button class="input14" id="passwordCheckButton">
                   <div class="container47">
-                    <div class="password-check">password check</div>
+                    <div class="duplicate-check">password check</div>
                   </div>
                 </button>
                 <span id="upass_re_error" class="error"></span><br>
@@ -267,11 +270,7 @@
                     </div>
                   </div>
                   <div class="input12">
-                    <input
-                      class="container44"
-                      placeholder="Name"
-                      type="text"
-                    />
+                    <input class="container44" id="uname" name="uname" placeholder="Name" type="text" />
                   </div>
                 </div>
                 <div class="row31">
@@ -288,13 +287,18 @@
                     </div>
                   </div>
                   <div class="input12">
-                    <input
-                      class="container44"
-                      placeholder="nickname"
-                      type="text"
-                    />
+                    <input class="container44" id="unick" name="unick" placeholder="nickname" type="text" />
                   </div>
+       				<button class="input14" id="nickCheckButton">
+	                  <div class="container47">
+	                    <div class="duplicate-check">nickname check</div>
+	                  </div>
+                	</button>
+					<div class="wrapper28">
+                   	 <div class="div330">(한글/영문/숫자, 2~10자)</div>
+                  	</div>
               </div>
+                  <span id="unick_error" class="error"></span><br />
                 <div class="row31">
                   <div class="row-inner11">
                     <div class="parent17">
@@ -308,13 +312,18 @@
                       </div>
                     </div>
                   </div>
+                  	<div class="input13">
+                      	<select id="utelecom" name="utelecom" class="container45">
+					            <option value="">선택</option>
+					            <option value="LG">LG</option>
+					            <option value="SK">SK</option>
+					            <option value="KT">KT</option>
+						</select>
+					</div>			
                   <div class="input12">
-                    <input
-                      class="container44"
-                      placeholder="01000000000"
-                      type="text"
-                    />
+                    <input class="container44" id="uphone" name="uphone" placeholder="01000000000" type="text" />
                   </div>
+                  <span id="uphone_error" class="error"></span><br />
                 </div>
               <div class="row36">
                 <div class="input-label-container-wrapper">
@@ -326,13 +335,10 @@
                   </div>
                 </div>
                 <div class="input19">
-                  <input
-                    class="container51"
-                    placeholder="user@domain.com"
-                    type="text"
-                  />
+                  <input class="container51" id="email" name="email" placeholder="user@domain.com" type="text" />
                 </div>
               </div>
+                <span id="email_error" class="error"></span><br />
               <div class="row31">
                 <div class="row-inner11">
                   <div class="parent17">
@@ -343,9 +349,9 @@
                   </div>
                 </div>
                 <div class="input12">
-                  <input class="container44" id="umailAddress" placeholder="우편번호" type="text" />
+                  <input class="container44" id="umailAddress" name="umailAddress" placeholder="우편번호" type="text" />
                 </div>
-                <button class="input14" onclick="sample6_execDaumPostcode()">
+                <button class="input14" onclick="sample6_execDaumPostcode(event)">
                   <div class="container47">
                     <div class="search-check">검색</div>
                   </div>
@@ -361,7 +367,7 @@
                   </div>
                 </div>
                 <div class="input19">
-                  <input class="container51" id="address" placeholder="주소" type="text" />
+                  <input class="container51" id="uaddress" name="uaddress" placeholder="주소" type="text" />
                 </div>
               </div>
               <div class="row36">
@@ -374,11 +380,7 @@
                   </div>
                 </div>
                 <div class="input19">
-                  <input
-                    class="container51"
-                    placeholder="상세주소"
-                    type="text"
-                  />
+                  <input class="container51" id="udetailAddress" name="udetailAddress" placeholder="상세주소" type="text" />
                 </div>
               </div>
             </form>
@@ -391,42 +393,42 @@
           <div class="details1">
             <div class="backgroundborder-parent">
               <div class="backgroundborder14">
-                <input class="input20" type="checkbox" />
+                <input class="input20" id="termsOfUseAgree" type="checkbox" />
                 <div class="label8">동의함</div>
                   <div class="div340">[ 필수 ] 이용약관 동의</div>
-                  <div class="category-name">
-                    <div class="div417"><a href="#">내용보기</a></div>
+                  <div class="agree-name">
+                    <div class="agree"><a href="#">내용보기</a></div>
                   </div>  
                   <img class="icon163" alt="" src="./public/icon-171@2x.png" />
                 </div>
               </div>
               <div class="backgroundborder14">
-                <input class="input20" type="checkbox" />
+                <input class="input20" id="privacyAgree" type="checkbox" />
                 <div class="label8">동의함</div>
                 <div class="div340">[ 필수 ] 개인정보 수집 및 이용 동의</div>
-                  <div class="category-name">
-                    <div class="div417"><a href="#">내용보기</a></div>
+                  <div class="agree-name">
+                    <div class="agree"><a href="#">내용보기</a></div>
                   </div>
                   <img class="icon163" alt="" src="./public/icon-181@2x.png" />
               </div>
               <div class="backgroundborder14">
-                <input class="input20" type="checkbox" />
+                <input class="input20" id="mktAgree" type="checkbox" />
                 <div class="label8">동의함</div>
                 <div class="div340">[ 선택 ] 마케팅 동의</div>
-                  <div class="category-name">
-                    <div class="div417"><a href="#">내용보기</a></div>
+                  <div class="agree-name">
+                    <div class="agree"><a href="#">내용보기</a></div>
                   </div>
                   <img class="icon163" alt="" src="./public/icon-181@2x.png" />
               </div>
             </div>
             <div class="actions3">
               <div class="link-parent11">
-                <div class="link75" id="linkContainer">
-                  <div class="action-icons">
-                    <img class="icon165" src="./public/icon-6.svg" />
-                  </div>
-                  <div class="div344">회원가입</div>
-                </div>
+                <div class="link75" id="linkContainer" onclick="submitForm()">
+				    <div class="action-icons">
+				        <img class="icon165" src="./public/icon-6.svg" />
+				    </div>
+				    <div class="div344">회원가입</div>
+				</div>
                 <div class="link76" id="linkContainer1">
                   <div class="icon-wrapper26">
                     <img
@@ -443,21 +445,5 @@
         </div>
       </section>
     </div>
-
-    <script>
-      var linkContainer = document.getElementById("linkContainer");
-      if (linkContainer) {
-        linkContainer.addEventListener("click", function (e) {
-          window.location.href = "./frame13.html";
-        });
-      }
-      
-      var linkContainer1 = document.getElementById("linkContainer1");
-      if (linkContainer1) {
-        linkContainer1.addEventListener("click", function (e) {
-          window.location.href = "./frame5.html";
-        });
-      }
-      </script>
   </body>
 </html>

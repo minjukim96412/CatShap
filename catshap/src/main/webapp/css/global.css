@@ -2,7 +2,32 @@ body {
     margin: 0;
     line-height: normal;
   }
-
+/*
+** Place Holder
+*/
+input::placeholder, 
+textarea::placeholder,
+input::-webkit-input-placeholder, 
+textarea::-webkit-input-placeholder { 
+    opacity: 0.500;
+    font-size: .95em;
+    /*font-style: italic;*/
+    color: var(--color-darkgray-300);
+}
+.sp--form[theme*="gray"] input::placeholder, 
+.sp--form[theme*="gray"] textarea::placeholder,
+.sp--form[theme*="gray"] input::-webkit-input-placeholder, 
+.sp--form[theme*="gray"] textarea::-webkit-input-placeholder,
+.sp--form[theme*="dark"] input::placeholder, 
+.sp--form[theme*="dark"] textarea::placeholder,
+.sp--form[theme*="dark"] input::-webkit-input-placeholder, 
+.sp--form[theme*="dark"] textarea::-webkit-input-placeholder,
+.sp--form[theme*="primary"]:not([theme*="-bright"]) input::placeholder, 
+.sp--form[theme*="primary"]:not([theme*="-bright"]) textarea::placeholder,
+.sp--form[theme*="primary"]:not([theme*="-bright"]) input::-webkit-input-placeholder, 
+.sp--form[theme*="primary"]:not([theme*="-bright"]) textarea::-webkit-input-placeholder { 
+    color: #fff;
+}
   
   :root {
     /* fonts */
