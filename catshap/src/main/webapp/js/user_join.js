@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // 모달 창 설정
     function setupModal(modalId, buttonId, fileUrl) {
         var $modal = $(modalId);
@@ -6,37 +6,42 @@ $(document).ready(function() {
         var $modalContent = $modal.find('.modal-content');
 
         // 버튼 클릭 시 모달 열기
-        $btn.on('click', function(event) {
+        $btn.on('click', function (event) {
             event.preventDefault(); // 기본 링크 클릭 동작 방지
             $.ajax({
                 url: fileUrl,
                 method: 'GET',
-                success: function(data) {
+                success: function (data) {
                     $modalContent.html('<span class="close">&times;</span><h2>이용약관</h2><p>' + data.replace(/\n/g, '<br>') + '</p>');
                     $modal.show();
                 },
-                error: function() {
+                error: function () {
                     alert('파일을 불러오는 데 실패했습니다.');
                 }
             });
         });
 
         // 모달 닫기 버튼 클릭 시 모달 닫기
-        $modal.on('click', '.close', function() {
+        $modal.on('click', '.close', function () {
             $modal.hide();
         });
 
         // 모달 외부 클릭 시 모달 닫기
-        $(window).on('click', function(event) {
+        $(window).on('click', function (event) {
             if ($(event.target).is($modal)) {
                 $modal.hide();
             }
         });
     }
 
-    setupModal('#termsModal', '#showTerms', './public/termsOfUseAgree.txt');
-    setupModal('#privacyModal', '#showPrivacy', './public/privacyAgree.txt');
-    setupModal('#mktModal', '#showMktAgree', './public/mktAgree.txt');
+    // 모달 설정
+    const modals = [
+        { modalId: '#termsModal', buttonId: '#showTerms', fileUrl: './public/termsOfUseAgree.txt' },
+        { modalId: '#privacyModal', buttonId: '#showPrivacy', fileUrl: './public/privacyAgree.txt' },
+        { modalId: '#mktModal', buttonId: '#showMktAgree', fileUrl: './public/mktAgree.txt' }
+    ];
+
+    modals.forEach(modal => setupModal(modal.modalId, modal.buttonId, modal.fileUrl));
 
     // 유효성 검사 정규 표현식
     const regex = {
@@ -58,10 +63,6 @@ $(document).ready(function() {
             errorField.text(errorMsg);
             return false;
         }
-    }
-
-    function validateUsid() {
-        return validateField('usid', regex.usid, '아이디는 4~16자 영문 소문자 및 숫자만 사용할 수 있습니다.');
     }
 
     function validateUpass() {
@@ -106,59 +107,28 @@ $(document).ready(function() {
         }
     }
 
-    function validateUnick() {
-        return validateField('unick', regex.unick, '닉네임은 2~10자의 한글, 영문, 숫자만 사용할 수 있습니다.');
-    }
-
-    function validateEmail() {
-        return validateField('email', regex.email, '유효한 이메일 주소를 입력하세요.');
-    }
-
-    function validateUphone() {
-        return validateField('uphone', regex.uphone, '휴대전화는 10자 또는 11자의 숫자만 허용됩니다.');
-    }
-
-    function validateUname() {
-        return validateField('uname', regex.uname, '이름은 한글 또는 영문만 입력 가능합니다.');
-    }
-
-    function validateTermsOfUseAgree() {
-        const errorField = $('#termsOfUseAgree_error');
-        if ($('#termsOfUseAgree').is(':checked')) {
+    function validateAgreement(checkboxId, errorMsgId, errorMsg) {
+        const errorField = $(errorMsgId);
+        if ($(checkboxId).is(':checked')) {
             errorField.text('');
             return true;
         } else {
-            errorField.text('이용약관에 동의해야 합니다.');
+            errorField.text(errorMsg);
             return false;
         }
-    }
-
-    function validatePrivacyAgree() {
-        const errorField = $('#privacyAgree_error');
-        if ($('#privacyAgree').is(':checked')) {
-            errorField.text('');
-            return true;
-        } else {
-            errorField.text('개인정보 수집 및 이용에 동의해야 합니다.');
-            return false;
-        }
-    }
-
-    function validateMktAgree() {
-        return true; // 마케팅 동의는 필수는 아니지만 값은 폼 제출 전에 설정
     }
 
     function isFormValid() {
         return (
-            validateUsid() &&
+            validateField('usid', regex.usid, '아이디는 4~16자 영문 소문자 및 숫자만 사용할 수 있습니다.') &&
             validateUpass() &&
             validateUpassRe() &&
-            validateUnick() &&
-            validateEmail() &&
-            validateUphone() &&
-            validateUname() &&
-            validateTermsOfUseAgree() &&
-            validatePrivacyAgree()
+            validateField('unick', regex.unick, '닉네임은 2~10자의 한글, 영문, 숫자만 사용할 수 있습니다.') &&
+            validateField('email', regex.email, '유효한 이메일 주소를 입력하세요.') &&
+            validateField('uphone', regex.uphone, '휴대전화는 10자 또는 11자의 숫자만 허용됩니다.') &&
+            validateField('uname', regex.uname, '이름은 한글 또는 영문만 입력 가능합니다.') &&
+            validateAgreement('#termsOfUseAgree', '#termsOfUseAgree_error', '이용약관에 동의해야 합니다.') &&
+            validateAgreement('#privacyAgree', '#privacyAgree_error', '개인정보 수집 및 이용에 동의해야 합니다.')
         );
     }
 
@@ -175,40 +145,40 @@ $(document).ready(function() {
     }
 
     // 실시간 유효성 검사 이벤트 추가
-    $('#usid').on('input', validateUsid);
+    $('#usid').on('input', () => validateField('usid', regex.usid, '아이디는 4~16자 영문 소문자 및 숫자만 사용할 수 있습니다.'));
     $('#upass').on('input', validateUpass);
     $('#upass_re').on('input', validateUpassRe);
-    $('#unick').on('input', validateUnick);
-    $('#email').on('input', validateEmail);
-    $('#uphone').on('input', function() {
+    $('#unick').on('input', () => validateField('unick', regex.unick, '닉네임은 2~10자의 한글, 영문, 숫자만 사용할 수 있습니다.'));
+    $('#email').on('input', () => validateField('email', regex.email, '유효한 이메일 주소를 입력하세요.'));
+    $('#uphone').on('input', function () {
         $(this).val(formatPhoneNumber(this.value));
-    }).on('blur', function() {
+    }).on('blur', function () {
         $(this).val(formatPhoneNumber(this.value));
     });
-    $('#uname').on('input', validateUname);
-    $('#termsOfUseAgree').on('change', validateTermsOfUseAgree);
-    $('#privacyAgree').on('change', validatePrivacyAgree);
-    $('#mktAgree').on('change', validateMktAgree);
+    $('#uname').on('input', () => validateField('uname', regex.uname, '이름은 한글 또는 영문만 입력 가능합니다.'));
+    $('#termsOfUseAgree').on('change', () => validateAgreement('#termsOfUseAgree', '#termsOfUseAgree_error', '이용약관에 동의해야 합니다.'));
+    $('#privacyAgree').on('change', () => validateAgreement('#privacyAgree', '#privacyAgree_error', '개인정보 수집 및 이용에 동의해야 합니다.'));
+    $('#mktAgree').on('change', () => validateAgreement('#mktAgree', '', ''));
 
     // 중복 확인 버튼 클릭 이벤트
-    $('#idCheckButton').click(function(event) {
+    $('#idCheckButton').click(function (event) {
         event.preventDefault();
-        if (validateUsid()) {
+        if (validateField('usid', regex.usid, '아이디는 4~16자 영문 소문자 및 숫자만 사용할 수 있습니다.')) {
             const usid = $('#usid').val();
             checkDuplicate('usid', usid);
         }
     });
 
-    $('#nickCheckButton').click(function(event) {
+    $('#nickCheckButton').click(function (event) {
         event.preventDefault();
-        if (validateUnick()) {
+        if (validateField('unick', regex.unick, '닉네임은 2~10자의 한글, 영문, 숫자만 사용할 수 있습니다.')) {
             const unick = $('#unick').val();
             checkDuplicate('unick', unick);
         }
     });
 
     // 폼 제출 처리
-    $('#signupForm').submit(function(event) {
+    $('#signupForm').submit(function (event) {
         if (isFormValid()) {
             // `mktAgree` 체크 여부에 따라 값 설정
             const mktAgreeValue = $('#mktAgree').is(':checked') ? 'Y' : 'N';
@@ -236,14 +206,14 @@ $(document).ready(function() {
         }
 
         $.post('/catshap/checkDuplicate', { type, value })
-            .done(function(data) {
+            .done(function (data) {
                 if (data.isAvailable) {
                     errorField.text(`사용 가능한 ${type === 'usid' ? '아이디' : '닉네임'}입니다.`).css('color', 'blue');
                 } else {
                     errorField.text(`${type === 'usid' ? '아이디' : '닉네임'}가 이미 사용 중입니다.`).css('color', 'red');
                 }
             })
-            .fail(function(error) {
+            .fail(function (error) {
                 console.error('Error:', error);
             });
     }
@@ -254,7 +224,7 @@ $(document).ready(function() {
         event.preventDefault();
 
         new daum.Postcode({
-            oncomplete: function(data) {
+            oncomplete: function (data) {
                 document.getElementById('umailAddress').value = data.zonecode;
                 document.getElementById('uaddress').value = data.address;
             }
@@ -262,12 +232,12 @@ $(document).ready(function() {
     }
 
     // 주소 검색 버튼 클릭 이벤트 핸들러
-    $('#addressSearchButton').on('click', function(event) {
+    $('#addressSearchButton').on('click', function (event) {
         sample6_execDaumPostcode(event);
     });
 
     // 폼 제출 함수 추가
-    window.submitForm = function() {
+    window.submitForm = function () {
         console.log('submitForm called'); // 디버깅을 위한 로그 추가
         if (isFormValid()) {
             document.getElementById('signupForm').submit();
@@ -275,11 +245,12 @@ $(document).ready(function() {
     };
 
     // 취소 버튼 클릭 시 페이지 이동
-    $('#cancel').on('click', function() {
+    $('#cancel').on('click', function () {
         // user_login.jsp로 리다이렉트
         window.location.href = 'user_login.jsp';
     });
 });
+
 
 
 

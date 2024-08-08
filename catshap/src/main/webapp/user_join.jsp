@@ -6,7 +6,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="initial-scale=1, width=device-width" />
 <link rel="stylesheet" href="./css/global.css" />
-<link rel="stylesheet" href="./css/join.css" />
+<link rel="stylesheet" href="./css/user_join.css" />
 <link rel="stylesheet" href="./css/A-01.css" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" />
@@ -21,7 +21,7 @@
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="./js/userjoin.js"></script>
+<script src="./js/user_join.js"></script>
 </head>
 <body>
 	<div class="div318">

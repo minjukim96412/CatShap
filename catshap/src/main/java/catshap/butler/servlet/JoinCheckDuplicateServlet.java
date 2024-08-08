@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 @WebServlet("/checkDuplicate")
-public class CheckDuplicateServlet extends HttpServlet {
+public class JoinCheckDuplicateServlet extends HttpServlet {
     private static final long serialVersionUID = 115345641231L;
     private UsersInterface usersDao;
 

@@ -1,7 +1,7 @@
 .modal {
     display: none; /* 숨김 상태로 시작 */
     position: fixed; /* 화면 고정 */
-    z-index: 1; /* 가장 위에 표시 */
+    z-index: 1000; /* 높은 z-index 값 */
     left: 0;
     top: 0;
     width: 100%; /* 전체 화면 폭 */
@@ -16,6 +16,7 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* 모달 폭 */
+    z-index: 1001; /* 높은 z-index 값 */
 }
 
 .close {
