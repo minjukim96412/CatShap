@@ -11,18 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import catshap.butler.bean.Users;
 import catshap.butler.dao.UsersDao;
-import catshap.butler.service.UsersJoinService;
+import catshap.butler.interfaces.UsersInterface;
 
 @WebServlet("/register")
 public class UsersRegisterServlet extends HttpServlet {
 
     private static final long serialVersionUID = 112347867413L;
-    private UsersJoinService usersJoinService;
+    private UsersInterface usersDao;
 
     @Override
     public void init() throws ServletException {
-        UsersDao usersDao = new UsersDao(); // UsersDao 인스턴스 생성
-        usersJoinService = new UsersJoinService(usersDao); // 생성자에 DAO 인스턴스 전달
+        usersDao = new UsersDao(); // UsersDao 인스턴스 생성
     }
 
     @Override
@@ -45,7 +44,7 @@ public class UsersRegisterServlet extends HttpServlet {
             user.setUdetailAddress(request.getParameter("udetailAddress"));
             user.setMktAgree(mktAgree != null ? "Y" : "N");
 
-            usersJoinService.registerUser(user);
+            usersDao.registUsers(user);
 
             // 회원가입 성공 후 로그인 페이지로 리다이렉트
             response.sendRedirect("user_login.jsp");
@@ -54,3 +53,4 @@ public class UsersRegisterServlet extends HttpServlet {
         }
     }
 }
+
