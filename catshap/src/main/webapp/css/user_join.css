@@ -659,7 +659,7 @@
   align-self: stretch;
   align-items: flex-start;
   gap: 26.7px;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-2xs);
   color: var(--color-mediumaquamarine);
 }
 .div318,

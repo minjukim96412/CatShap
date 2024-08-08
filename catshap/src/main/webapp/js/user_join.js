@@ -53,17 +53,18 @@ $(document).ready(function () {
     };
 
     // 필드 유효성 검사 함수
-    function validateField(id, regex, errorMsg) {
-        const field = $(`#${id}`);
-        const errorField = $(`#${id}_error`);
-        if (regex.test(field.val().replace(/-/g, ''))) { // 하이픈 제거 후 검증
-            errorField.text('');
-            return true;
-        } else {
-            errorField.text(errorMsg);
-            return false;
-        }
-    }
+	function validateField(id, regex, errorMsg) {
+	    const field = $(`#${id}`);
+	    const errorField = $(`#${id}_error`);
+	    const fieldValue = field.val().trim(); // 앞뒤 공백 제거
+	    if (regex.test(fieldValue.replace(/-/g, ''))) { // 하이픈 제거 후 검증
+	        errorField.text('');
+	        return true;
+	    } else {
+	        errorField.text(errorMsg);
+	        return false;
+	    }
+	}
 
     function validateUpass() {
         const passwordValue = $('#upass').val();
@@ -245,7 +246,7 @@ $(document).ready(function () {
     };
 
     // 취소 버튼 클릭 시 페이지 이동
-    $('#cancel').on('click', function () {
+    $('#user_cancel').on('click', function () {
         // user_login.jsp로 리다이렉트
         window.location.href = 'user_login.jsp';
     });

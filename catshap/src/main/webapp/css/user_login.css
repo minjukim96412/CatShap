@@ -264,7 +264,6 @@
 }
 
 .login-form {
-  width: 409px;
   flex-direction: column;
   justify-content: flex-start;
 }
@@ -286,7 +285,6 @@
 }
 
 .login-desktop {
-  width: 1692px;
   background-color: var(--color-white);
   overflow: hidden;
   flex-direction: column;

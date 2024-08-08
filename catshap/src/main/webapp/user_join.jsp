@@ -25,119 +25,6 @@
 </head>
 <body>
 	<div class="div318">
-		<header class="header2">
-			<div class="backgroundhorizontalbordersh34">
-				<div class="backgroundhorizontalbordersh35">
-					<div class="button-wrapper8">
-						<div class="button30">
-							<div class="background101"></div>
-							<div class="background102"></div>
-						</div>
-					</div>
-					<div class="category-name-parent">
-						<div class="category-name">
-							<div class="div417">
-								<a href="./B-01.html">간식</a>
-							</div>
-						</div>
-						<div class="category-name">
-							<div class="div417">
-								<a href="./B-01.html">사료</a>
-							</div>
-						</div>
-						<div class="category-name">
-							<div class="div417">
-								<a href="./B-01.html">장난감</a>
-							</div>
-						</div>
-						<div class="category-name">
-							<div class="div417">
-								<a href="./B-01.html">옷</a>
-							</div>
-						</div>
-						<div class="category-name4">
-							<div class="div421 div417">
-								<a href="./B-01.html">기타</a>
-							</div>
-						</div>
-						<div class="item-wrapper6">
-							<img class="item-icon58" loading="lazy" alt=""
-								src="./public/item1@2x.png" />
-						</div>
-						<div class="strong-q-a-wrapper3">
-							<b class="strong-q18" id="strongQ"><a href="./D-01.html">Q
-									& A</a></b>
-						</div>
-						<div class="review-container-container">
-							<div class="review-container3">
-								<div class="reviews-wrapper9">
-									<div class="reviews17">
-										<a href="./D-04.html">REVIEWS</a>
-									</div>
-								</div>
-								<div class="emphasis16"></div>
-							</div>
-						</div>
-					</div>
-					<img class="item-icon59" alt="" src="./public/item-12.svg" />
-				</div>
-			</div>
-			<div class="horizontalborder26">
-				<img class="item-icon60" loading="lazy" alt=""
-					src="./public/item-21@2x.png" />
-
-				<div class="item43">
-					<img class="black-15006260-2-icon13" loading="lazy" alt=""
-						src="./public/black-15006260-2-11@2x.png" />
-				</div>
-				<div class="external-link-wrapper">
-					<div class="external-link">
-						<img class="link-icon36" loading="lazy" alt=""
-							src="./public/link1.svg" id="linkIcon" />
-
-						<div class="link92" id="linkContainer">
-							<img class="icon211" loading="lazy" alt=""
-								src="./public/icon-10.svg" />
-
-							<div class="background103">
-								<b class="strong-018">0</b>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div>
-				<img class="icon212" alt="" src="./public/icon-7@2x.png" /> <img
-					class="icon213" alt="" src="./public/icon-29.svg" />
-
-				<div class="div422">  고객 지원센터</div>
-				<a class="strong-0109230444918">01012345678</a> <img class="icon214"
-					alt="" src="./public/icon-32@2x.png" />
-
-				<div class="link93" id="link">로그인</div>
-				<img class="icon215" alt="" src="./public/icon-41@2x.png" />
-
-				<div class="link94" id="linkContainer">
-					<a class="a66">회원가입</a>
-				</div>
-				<img class="icon216" alt="" src="./public/icon-52.svg" /> <a
-					class="a67" id="text3">주문정보</a>
-			</div>
-			<div class="div423">
-				<div class="child11"></div>
-				<img class="black-15006260-2-icon13" loading="lazy" alt=""
-					src="./public/black-15006260-2-11@2x.png" />
-
-				<div class="inner12">
-					<div class="parent23">
-						<div class="div424">#</div>
-						<div class="wrapper34">
-							<a class="a68">냥</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</header>
 		<div class="auth-container-wrapper">
 			<div class="auth-container">
 				<div class="auth-options">
@@ -440,7 +327,7 @@
 							</div>
 							<div class="div344">회원가입</div>
 						</button>
-						<div class="link76" id="cancel">
+						<div class="link76" id="user_cancel">
 							<div class="icon-wrapper26">
 								<img class="link-icon29" alt="" src="./public/icon-201.svg" />
 							</div>
@@ -454,34 +341,4 @@
 	</section>
 	</div>
 </body>
-<footer class="footer3">
-	<div class="rectangle1"></div>
-	<div class="company-info">
-		<b class="strong-0109230444919">01012345678</b>
-		<div class="operation-hours">
-			<div class="div435">
-				<p class="m-1p1">평일 오전 9:00 ~ 오후 6:00</p>
-				<p class="m-1p1">점심시간 오후 1:00 ~ 오후 2:00</p>
-				<p class="m-1p1">토 / 일 / 공휴일 휴무</p>
-			</div>
-		</div>
-	</div>
-	<div class="team">
-		<div class="div436">김민주 | 마윤주 | 박민서 | 이형석 | 최원</div>
-	</div>
-	<div class="div437">
-		<div class="child11"></div>
-		<img class="black-15006260-2-icon14" alt=""
-			src="./public/black-15006260-2-11@2x.png" />
-
-		<div class="logo-wrapper">
-			<div class="parent23">
-				<div class="div424">#</div>
-				<div class="logo-name-wrapper">
-					<a class="a69">냥</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</footer>
 </html>
