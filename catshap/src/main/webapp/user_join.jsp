@@ -37,13 +37,13 @@
 				</div>
 				<div class="login-container">
 					<div class="link-wrapper4">
-						<img class="link-icon29" alt="" src="./public/link-1.svg" />
+						<img class="link-icon29" alt="" src="./public/join_link.svg" />
 					</div>
 					<div class="login-icon-container-parent">
 						<div class="login-icon-container">
 							<img class="link-icon29" alt="" src="./public/icon-13.svg" />
 						</div>
-						<div class="div327">로그인</div>
+						<div class="div327"><a href="user_login.jsp">로그인</a></div>
 					</div>
 					<div class="icon-wrapper21">
 						<img class="link-icon29" alt="" src="./public/icon-13.svg" />
@@ -53,7 +53,7 @@
 			</div>
 		</div>
 		<section class="form-header">
-			<img class="separator-icon13" alt="" src="./public/separator5.svg" />
+			<img class="separator-icon13" alt="" src="./public/join_separator.svg" />
 			<h2 class="h21">
 				<span>
 					<p class="p14">아래 회원가입</p>
@@ -62,7 +62,7 @@
 			</h2>
 		</section>
 		<section class="form-container">
-			<img class="separator-icon14" alt="" src="./public/separator-12.svg" />
+			<img class="separator-icon14" alt="" src="./public/join_separator.svg" />
 			<div class="form-content">
 				<div class="input-labels-parent">
 					<form class="id-input-container1" id="signupForm" method="post"
